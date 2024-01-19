@@ -27,8 +27,8 @@ io.on("connection", (socket) => {
     io.emit("msg", { level: "sys", msg: username + "님이 입장하였습니다" });
   });
 
-  socket.on("send", (msg1) => {
-    socket.broadcast.emit("msg", { level: "", msg: msg1 });
+  socket.on("send", ({ username: username, msg: msg1 }) => {
+    socket.broadcast.emit("msg", { level: "", msg: msg1, username: username });
   });
 });
 
